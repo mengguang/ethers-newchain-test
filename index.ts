@@ -1,18 +1,12 @@
 let mock = require("mock-require");
-mock("@ethersproject/signing-key","./signing-key");
+mock("@ethersproject/signing-key", "./signing-key");
 
 import ethers = require("ethers");
 import fs = require("fs");
-import readlineSync = require("readline-sync");
+//import readlineSync = require("readline-sync");
 
 const rpc_url: string = "https://rpc2.newchain.cloud.diynova.com";
 const provider = new ethers.providers.JsonRpcProvider(rpc_url);
-
-function delay(ms: number) {
-    return new Promise((resolve) => {
-        setTimeout(resolve, ms);
-    });
-}
 
 function pretty_balance(balance) {
     return ethers.utils.formatEther(balance);
@@ -43,7 +37,7 @@ async function do_work() {
 
     let tx = {
         to: "0x29e9356eC2082f447a7F747bF8D83c35E858fb86",
-        value: ethers.utils.parseEther("2.0")
+        value: ethers.utils.parseEther("1.0")
     }
 
     let response = await signer.sendTransaction(tx);
